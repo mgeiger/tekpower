@@ -30,7 +30,7 @@ class TP3005P(object):
     def update_connection(self, serial_connection):
         self.serial_connection = serial_connection
 
-    def identify(self);
+    def identify(self):
         """
         Acquires the identity of the attached device.
 
