@@ -71,12 +71,12 @@ class TP3005P(object):
         Boolean: 0 OFF, 1 ON
         Example: OUTPUT1\n
         """
-        if state and self.on:
+        if state == self.on:
             # Check to see what state it is in first
             return
 
         time.sleep(0.05)
-        if out_on >= 1:
+        if state:
             command = b'OUTPUT1:\\r\\n'
         else:
             command = b'OUTPUT0\\r\\n'
@@ -85,7 +85,7 @@ class TP3005P(object):
 
     def current(self):
         """
-        Acquires the output current on the attached device. 
+        Acquires the output current on the attached device.
 
         Command format: IOUT1?\n
         Description: Returns the actual output current.
@@ -93,7 +93,7 @@ class TP3005P(object):
         """
         time.sleep(0.05)
         command = b'IOUT1?\\r\\n'
-        ser1.write(command)
+        self.serial_connection.write(command)
         line = self.serial_connection.readline()
         amps = float(line.decode('utf8'))
         return amps
@@ -109,7 +109,7 @@ class TP3005P(object):
         time.sleep(0.05)
         command = b'VOUT1?\\r\\n'
         self.serial_connection.write(command)
-        line = ser1.readline()
+        line = self.serial_connection.readline()
         volts = float(line.decode('utf8'))
         return volts
 
@@ -142,8 +142,9 @@ class TP3005P(object):
         Example: VSET1:05.00\n
                  VSET1:30.00\n
         """
-        command = b'VSET1:'                      #b'VSET1:07.00\\r\\n'
-        command = command + format(volts, "=05.2F").encode('ascii')
+        # b'VSET1:07.00\\r\\n'
+        command = b'VSET1:'
+        command = command + format(value, "=05.2F").encode('ascii')
         command = command + b'\\r\\n'
         self.serial_connection.write(command)
 
@@ -177,8 +178,8 @@ class TP3005P(object):
                  ISET1:5.000\n
         """
         time.sleep(0.05)
-        command = b'ISET1:'                      #b'ISET1:2.500\\r\\n'
-        command = command + format(amps, "=05.3F").encode('ascii')
+        # b'ISET1:2.500\\r\\n'
+        command = b'ISET1:'
+        command = command + format(value, "=05.3F").encode('ascii')
         command = command + b'\\r\\n'
         self.serial_connection.write(command)
-
