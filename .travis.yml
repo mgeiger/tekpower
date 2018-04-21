@@ -16,3 +16,9 @@ deploy:
     tags: true
     repo: mgeiger/tekpower
     python: 3.6
+notifications:
+  slack:
+    secure: RruAcJGOD7qQI29aKL7S18Ankl5CJbOZnqPwDyxcV6wJJtWirjA55A8ZrHji98j6rO3WHBovlxVNvdiohvU1iiyk12ZekV9DTXR7uPpmLWy50LOjSEdcQbAxQ7M/BjbktoZy3NMBU/48nh/RoSHeTBRTNgi1iE/63XwuA0OM6jodO128cG/XfP0QcZN+/BHImMqRyZDYzzTuL3x3fyILEQ93ig/kfltWUSprY9DTj5os8wyrR3Oj8Kpo4Ys0RzYVpv2gJa9jtEh5VXrxFql3SJLWJPtr4/cY6qX+CQTsUqB3BBfKlOb9fsv+zz2q09SpFKOHIrocZXgOVYv56viUaxA1Po2/TNAPefS4F3vLmGSq/myb4yWOJivk9gP+wL1XgokDsunetzM9BbELTWAngDTsFagSesom50BJDMIH4AIq7HSeGjlfxQ1XEBM/OkJOYMW58gd/q9FzZgwSAMBm5sjfqfRwQvBdXh02fM4lb12YRMqWLmFxvyGvn0t1JmEJwy0fU9PJ/DCBTwTEhOjAVoB3MLMlz9sBTJBpH/icv1HiK8dbjjxGtZaA6U+o1wCfV0MFs2cCEFvCcfyNdQpBiEO3QQCAklBqT8dE5omjA/aozb4o0wurxTBbKzJleIeOYNje0aw0heFSQE3MImgp5cS1DRpg/WPTzdmd73i/3BE=
+    on_success: change
+    on_failure: always
+
